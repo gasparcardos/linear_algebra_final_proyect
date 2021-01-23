@@ -1,4 +1,4 @@
-def generate_subspace(vectors):
+def generate_relational_matrix(vectors):
     matx = matrix(vectors)
     echelon_mat = matx.rref()
     rows, columns = echelon_mat.dimensions()
@@ -10,13 +10,10 @@ def generate_subspace(vectors):
                 zero_counter = zero_counter +1
         if zero_counter == columns:
             zero_rows.append(row)
-            
+    #print(f'This is before: {echelon_mat}')
     echelon_mat = echelon_mat.delete_rows(zero_rows, check= True)
-    print(echelon_mat)
+    return(echelon_mat)
 
-
-            
-    
 def solve_equations(A, b):
     m,n=A.dimensions()
     x,y=b.dimensions()
@@ -46,8 +43,8 @@ def solve_equations(A, b):
 #Para que el usuario defina la matriz y el vector 
 #A=matrix([[1,2,-1,3],[3,5,-4,7]])
 #b=matrix([[0],[0]])
-vectors = [(1, 2, 3, 4), (2,3, 1, 4), (2, 3,1, 4), (2, 3, 1 , 4)]
-generate_subspace(vectors)
+vectors = [(1,-1,0,2),(-1,1,0,-2),(2, 1, 3, 1),(1, 2, 3,-1)]
+generate_relational_matrix(vectors)
 #variablesDefinition(A, b)
 
 
