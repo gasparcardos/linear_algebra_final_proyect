@@ -1,0 +1,41 @@
+
+def calcular_producto_dos_vectores(A, u, v):
+    #esta funcion recibe:
+    #A matriz generada por matrix
+    #u vector generada por matrix
+    #v vector generada por matrix
+    if(A.is_positive_definite()):
+        print("*** La matriz es positiva definida ***");
+    else:
+        print("*** La matriz NO es positiva definida ***");
+    ut = u.transpose();
+    utAv = ut*A*v;
+    print("*** El resultado del producto es: ***");
+    print(utAv);
+    return(utAv)
+
+def proyeccion_ortogonal_u_sobre_v(A, u, v):
+    #esta funcion recibe:
+    #A matriz generada por matrix
+    #u vector generada por matrix
+    #v vector generada por matrix
+    c1 = calcular_producto_dos_vectores(A, v, u);
+    c2 = calcular_producto_dos_vectores(A, v, v);
+    c = c1/c2;
+    print("*** EL coeficiente de fourier es: ***");
+    print(c);
+    cv = c*v.transpose();
+    cvt = cv.transpose();
+    print("*** La proyeccion ortogonal de u sobre v es: ***");
+    print(cvt);
+    return(c, cvt)
+
+
+
+A = matrix(QQ, 2, [2,5,5,13]);
+u = matrix(QQ, 2, [1,1]);
+v = matrix(QQ, 2, [1,1]);
+
+#calcular_producto_dos_vectores(A, u, v);
+
+#proyeccion_ortogonal_u_sobre_v(A, u, v)
